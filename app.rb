@@ -42,6 +42,7 @@ end
 
 
 
+
 # check if user is logged in with a session
 def current_user
 	if session[:user_id]
