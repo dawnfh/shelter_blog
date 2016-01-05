@@ -1,6 +1,7 @@
 require "sinatra"
 require "sinatra/activerecord"
 require "sinatra/flash"
+
 require "./models"
 
 set :database, "sqlite3:shelter_blog.sqlite3"
@@ -35,6 +36,7 @@ get '/profile' do
 end
 
 get '/post' do
+
 end
 
 
@@ -55,3 +57,4 @@ get '/logout' do
 	flash[:info] = "You are now logged out."
 	redirect '/sign-in'
 end
+
