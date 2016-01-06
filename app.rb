@@ -43,10 +43,10 @@ get '/profile' do
 end
 
 # HTTP GET method and "/signup" action route
-get "/signin" do
-  flash[:info] = "You are now signed up and logged in" 
-  erb :index
-end
+# get "/signin" do
+   
+#   erb :index
+# end
 
 post "/signup" do
   #   in the signup form for the email and password input fields
@@ -58,7 +58,8 @@ post "/signup" do
   #   logged in content
   session[:user_id] = @user.id
   # this redirects to the get "/" route
-  redirect "/"
+  flash[:notice] = "You are now signed up and logged in"
+  redirect "/profile"
 end
 
 
