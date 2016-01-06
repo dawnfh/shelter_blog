@@ -15,7 +15,7 @@
 <h2 id="log">Log In</h2>
 
 <div id="loginin">
-<form method="POST" action="/sign-in">
+<form method="POST" action="/profile">
 	<label for="username">Username</label>
 	<input type="text" name="username"
 	placeholder="Username">
@@ -27,15 +27,18 @@
 </div>
 
 
-<h2 id="sign">Sign Up</h2>
+<!-- ******************************************* -->
 <!--
   this is the signnup form 
   pay special attention to the method and action attributes
   method="POST" and action="/signup" means it will go to the
   post "/signup" route defined in the app.rb file
  -->
+
+ <h2 id="sign">Sign Up</h2>
+
  <div id="signup">
-	<form method="POST" action="/signup">
+	<form method="POST" action="/profile">
 		<label for="name">Create Username</label>
 	  <input type="text" name="username"
 	  placeholder="Username">

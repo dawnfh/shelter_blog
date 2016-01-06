@@ -1,7 +1,27 @@
 
+<a href = "/">Home</a>
 
 
-<h1 id="">Posts</h1>
+<!--
+  this is the new post form 
+  pay special attention to the method and action attributes
+  method="POST" and action="/posts" means it will go to the
+  post "/posts" route defined in the app.rb file
+ -->
+
+ <h1 id="newpost">New Post Form</h1>
+<form method="POST" action="/signup">
+	<label for="user_id">Userid</label>
+	<input type="text" name="user_id">
+	<label for="body">Body</label>
+	<input type="text" name="body">
+	<input type="submit">
+</form>
+
+
+
+<!--  this is the New Post form -->
+<h1 id="">All Posts</h1>
 <ul class="postlist">
   <% @posts.each do |post| %>
   	<h3><strong>Title</strong><%= post.title %></h3>

@@ -1,3 +1,5 @@
+
+# class is inheriting from active
 class User <ActiveRecord::Base
 	has_many :posts
 	

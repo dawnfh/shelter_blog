@@ -1,5 +1,6 @@
 require "sinatra"
 require "sinatra/activerecord"
+require "sqlite3"
 require "sinatra/flash"
 
 require "./models"
@@ -15,11 +16,8 @@ get '/' do
 	erb :index	
 end
  #will output display from index which is home & login access.
-# get '/login' do
-# 	erb :index
-# end
 
-post '/login' do
+post '/' do
 	@user = User.where(username: params[:username]).first
 	if @user && @user.password == params[:password]
 		sessions[:user_id] = @user.id
@@ -27,7 +25,7 @@ post '/login' do
 		redirect '/profile'
 	else
 		redirect '/'
-		flashe[:alert] = "Incorrect password. Do you have an account wth us?"
+		flash[:alert] = "Incorrect password. Do you have an account wth us?"
 	end
 end
 
@@ -35,12 +33,30 @@ get '/profile' do
 	erb :profile
 end
 
-get '/post' do
+# HTTP GET method and "/signup" action route
+get "/signin" do
+  flash[:info] = "You are now signed up and logged in" 
+  erb :index
+end
 
+post "/signup" do
+  #   in the signup form for the email and password input fields
+  @user = User.create(email: params[:email], password: params[:password])
+  
+  # since the user is now created we immediately store
+  #   their user id in the session because we assume he/she
+  #   wants to be logged in immediately and have access to the
+  #   logged in content
+  session[:user_id] = @user.id
+  # this redirects to the get "/" route
+  redirect "/"
 end
 
 
 
+get '/post' do
+  erb :posts
+end
 
 
 # check if user is logged in with a session
@@ -50,11 +66,11 @@ def current_user
 	end
 end
 
-
-
 get '/logout' do
 	session.clear
 	flash[:info] = "You are now logged out."
 	redirect '/sign-in'
 end
+
+
 
