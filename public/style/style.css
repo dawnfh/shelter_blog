@@ -1,0 +1,41 @@
+html {
+	background-color:#00CC99 ;
+	font-family: 'Montserrat', sans-serif;
+	color: white;
+}
+
+.nav_bar {
+	height: 80px;
+	width: 100%;
+	background-color: black;
+}
+.nav_bar ul{
+	float: right;
+
+}
+.nav_bar li{
+	display: inline;
+	text-decoration: none;
+	margin-right: 20px;
+}
+
+.nav_bar a {
+	text-decoration: none;
+}
+
+#main {
+	width: 90%;
+	height: 500px;
+	/*border: 1px solid red;*/
+	margin-top: 3%;
+	margin-left: 5%
+}
+
+h1 {
+	text-align: center;
+	font-weight: bold;
+	/*margin: 0, auto;*/
+	/*margin-top: 15%;*/
+	/*width: 30%;*/
+	/*border: 1px solid red;*/
+}
