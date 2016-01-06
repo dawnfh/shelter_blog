@@ -68,7 +68,7 @@ end
 
 post '/createpost' do
 	@post=Post.create(body: params[:body])
-  redirect "/posts"
+  redirect "/allposts"
 end
 
 
