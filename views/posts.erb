@@ -1,0 +1,13 @@
+
+
+
+<h1 id="">Posts</h1>
+<ul class="postlist">
+  <% @posts.each do |post| %>
+  	<h3><strong>Title</strong><%= post.title %></h3>
+    <li><strong>Id:</strong> <%= post.id %></li>
+    <li><strong>Body:</strong> <%= post.body %></li>
+    <li><strong>User Id:</strong><%= post.user_id %></li>
+    <li><strong>Username:</strong><%= post.user_id %></li>
+  <% end %>
+</ul>
