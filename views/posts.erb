@@ -25,10 +25,10 @@
 <h1 id="">All Posts</h1>
 <ul class="postlist">
   <% @posts.each do |post| %>
-  	<h3><strong>Title</strong><%= post.title %></h3>
-    <li><strong>Id:</strong> <%= post.id %></li>
+  	<h3><strong>Title</strong><%#= post.title %></h3>
+    
     <li><strong>Body:</strong> <%= post.body %></li>
-    <li><strong>User Id:</strong><%= post.user_id %></li>
-    <li><strong>Username:</strong><%= post.user_id %></li>
+ 
+    <li><strong>Username:</strong><%= post.user.username %></li>
   <% end %>
 </ul>
