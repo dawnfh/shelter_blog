@@ -4,5 +4,5 @@ class CreatePostsTable < ActiveRecord::Migration
   		t.string :body
   		t.integer :user_id
   end
-end
+ end
 end

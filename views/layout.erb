@@ -15,9 +15,26 @@
 				</ul>
 			</div>
 			<h1>MicroBlog</h1>
+
 			<div id="main">
+				</div>
+
+
+		<% if flash[:notice] %>
+  <div class="flash-notice">
+    <%=flash[:notice] %>
+  </div>
+		<% end %>
+
+		<% if flash[:alert] %>
+		  <div class="flash-alert">
+		    <%=flash[:alert] %>
+		  </div>
+		<% end %>
+
+		
 				
-			</div>
+			
 				<!-- Sign-in form, Sign-up form go here. see 'index.erb' -->
 			<%=yield%>
 			
