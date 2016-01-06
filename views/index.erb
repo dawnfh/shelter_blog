@@ -1,0 +1,51 @@
+
+
+<h1 id="indextitle">Shelter Blog</h2>
+	<p class="aboutus">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	</p>
+
+
+
+<h2 id="log">Log In</h2>
+
+<div id="loginin">
+<form method="POST" action="/sign-in">
+	<label for="username">Username</label>
+	<input type="text" name="username"
+	placeholder="Username">
+	<label for="password">Password</label>
+	<input type="password" name="password"
+	placeholder="Password">
+	<input type="submit" value="Sign In">
+</form>
+</div>
+
+
+<h2 id="sign">Sign Up</h2>
+<!--
+  this is the signnup form 
+  pay special attention to the method and action attributes
+  method="POST" and action="/signup" means it will go to the
+  post "/signup" route defined in the app.rb file
+ -->
+ <div id="signup">
+	<form method="POST" action="/signup">
+		<label for="name">Create Username</label>
+	  <input type="text" name="username"
+	  placeholder="Username">
+	  <label for="password">Create Password</label>
+	  <input type="password" name="password"
+	  placeholder="Password">
+	  <label for="email">Email</label>
+	  <input type="text" name="email"
+	  placeholder="Email">
+	  <textarea name="message_body" cols='100' rows="10" placeholder="Comment box"></textarea><br>
+	  <input type="submit" value="Create Account">
+	</form>
+</div>
