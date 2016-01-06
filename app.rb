@@ -27,11 +27,12 @@ post '/login' do
 		redirect '/profile'
 	else
 		redirect '/'
-		flashe[:alert] = "Incorrect password. Do you have an account wth us?"
+		flash[:alert] = "Incorrect password. Do you have an account wth us?"
 	end
 end
 
 get '/profile' do
+	"Hello"
 	erb :profile
 end
 
@@ -44,17 +45,17 @@ end
 
 
 # check if user is logged in with a session
-def current_user
-	if session[:user_id]
-		@current_user = User.find(session[:user_id])
-	end
-end
+# def current_user
+# 	if session[:user_id]
+# 		@current_user = User.find(session[:user_id])
+# 	end
+# end
 
 
 
-get '/logout' do
-	session.clear
-	flash[:info] = "You are now logged out."
-	redirect '/sign-in'
-end
+# get '/logout' do
+# 	session.clear
+# 	flash[:info] = "You are now logged out."
+# 	redirect '/sign-in'
+# end
 
