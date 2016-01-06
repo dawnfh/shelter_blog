@@ -48,9 +48,9 @@ end
 #   erb :index
 # end
 
-post "/signup" do
+post "/" do
   #   in the signup form for the email and password input fields
-  @user = User.create(email: params[:email], password: params[:password])
+  @user = User.create(username: params[:username], email: params[:email], password: params[:password])
   
   # since the user is now created we immediately store
   #   their user id in the session because we assume he/she
