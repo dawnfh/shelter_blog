@@ -11,6 +11,14 @@ set :database, "sqlite3:shelter_blog.sqlite3"
 
 enable :sessions
 
+
+# check if user is logged in with a session
+def current_user
+	if session[:user_id]
+		@current_user = User.find(session[:user_id])
+	end
+end
+
 #will output display of what is on the index.erb templpate
 get '/' do
 	erb :index	
@@ -20,12 +28,13 @@ end
 post '/' do
 	@user = User.where(username: params[:username]).first
 	if @user && @user.password == params[:password]
-		sessions[:user_id] = @user.id
+		session[:user_id] = @user.id
 		flash[:notice] = "You are logged in."
 		redirect '/profile'
 	else
-		redirect '/'
 		flash[:alert] = "Incorrect password. Do you have an account wth us?"
+		redirect '/'
+		
 	end
 end
 
@@ -59,12 +68,6 @@ get '/post' do
 end
 
 
-# check if user is logged in with a session
-def current_user
-	if session[:user_id]
-		@current_user = User.find(session[:user_id])
-	end
-end
 
 get '/logout' do
 	session.clear
