@@ -36,7 +36,7 @@ post '/' do
 end
 
 get '/profile' do
-	"Hello"
+	@user=current_user
 	erb :profile
 end
 
@@ -60,11 +60,15 @@ post "/signup" do
   redirect "/profile"
 end
 
+get '/allposts' do
+	@posts=Post.where(user_id: session[:user_id])
+	erb :posts
+end
 
 
-
-get '/post' do
-  erb :posts
+post '/createpost' do
+	@post=Post.create(body: params[:body])
+  redirect "/posts"
 end
 
 
