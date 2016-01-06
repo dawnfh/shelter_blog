@@ -1,13 +1,11 @@
 require "sinatra"
 require "sinatra/activerecord"
-require "sqlite3"
 require "sinatra/flash"
-
 require "./models"
 
-set :database, "sqlite3:shelter_blog.sqlite3"
 
 
+configure(:development){set :database, "sqlite3:shelter_blog.sqlite3"}
 
 enable :sessions
 
