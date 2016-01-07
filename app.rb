@@ -57,7 +57,7 @@ post "/" do
   session[:user_id] = @user.id
   # this redirects to the get "/" route
   flash[:notice] = "You are now signed up and logged in"
-  redirect "/profile"
+  redirect '/profile'
 end
 
 get '/allposts' do
@@ -65,14 +65,10 @@ get '/allposts' do
 	erb :posts
 end
 
-
 post '/createpost' do
 	@post=Post.create(body: params[:body])
   redirect "/allposts"
 end
-
-
-
 
 get '/logout' do
 	session.clear
