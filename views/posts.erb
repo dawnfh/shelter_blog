@@ -11,11 +11,10 @@
 
  <h1 id="newpost">New Post Form</h1>
 <form method="POST" action="/createpost">
-	<label for="user_id">Userid</label>
-	<input type="text" name="user_id">
+	
 	<label for="body">Body</label>
   <textarea name="message_body" cols='100' rows="10" placeholder="Comment box"></textarea><br>
-	<input type="text" name="body">
+	
 	<input type="submit">
 </form>
 
@@ -25,10 +24,7 @@
 <h1 id="">All Posts</h1>
 <ul class="postlist">
   <% @posts.each do |post| %>
-  	<h3><strong>Title</strong><%#= post.title %></h3>
-    
     <li><strong>Body:</strong> <%= post.body %></li>
- 
     <li><strong>Username:</strong><%= post.user.username %></li>
   <% end %>
 </ul>
