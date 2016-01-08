@@ -61,14 +61,71 @@ end
 get '/allposts' do
 	@posts=Post.all
 	@userposts=Post.where(user_id: session[:user_id])
-
 	erb :posts
 end
 
 post '/createpost' do
 	@post=Post.create(body: params[:body])
-
   redirect "/allposts"
+end
+
+get "/followees" do
+  # here we are grabbing all the users that the logged in user is following
+  @users = current_user.followees
+
+  # this will output whatever is within the users.erb template
+  # notice how this also goes to the posts.erb template
+  #   think DRY (Don't Repeat Yourself)
+  erb :follows
+end
+
+get "/posts/followers" do
+  # this loads all the created posts from the logged in user's
+  #   followers
+  # puts into an array.
+  @posts = current_user.followers.inject([]) do |posts, follower|
+    # this takes the current follower's posts and add them to the
+    #   posts array we are building
+    posts << follower.posts
+  end
+
+  #   http://ruby-doc.org/core-2.2.3/Array.html#method-i-flatten
+  @posts.flatten!
+  erb :posts
+end
+
+
+
+
+get "/followers" do
+  # here we are grabbing all the users that are following the logged in user 
+  @users = current_user.followers
+
+  # this will output whatever is within the users.erb template
+  # notice how this also goes to the posts.erb template
+  #   think DRY (Don't Repeat Yourself)
+  erb :follows
+end
+
+# HTTP GET method and "/users/:user_id/follow" action route
+get "/users/:followee_id/follow" do
+  # here we are creating an association between the current user
+  #   who is doing the following and the user you are tryng to follow
+  Follow.create(follower_id: session[:user_id], followee_id: params[:followee_id])
+
+  # this redirects to the get "/users/all" route
+  # right now its hardcoded to go to this route but it would make
+  #   more sense to have this redirect to the page that called it
+  #   for our purposes now it will do but there is a more useful
+  #   way to do this
+  redirect "/followss"
+end
+
+# HTTP GET method and "/users/:user_id/unfollow" action route
+get "/users/:followee_id/unfollow" do
+  @follow = Follow.where(follower_id: session[:user_id], followee_id: params[:followee_id]).first
+  @follow.destroy
+
 end
 
 get '/logout' do

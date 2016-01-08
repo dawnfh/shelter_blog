@@ -1,5 +1,7 @@
 
-<a href = "/">Home</a>
+
+<a href = "/">Logout</a>
+<a href ='/profiles'>My Account</a>
 
 
 <!--
@@ -9,34 +11,38 @@
   post "/posts" route defined in the app.rb file
  -->
 
- <h1 id="newpost">New Post Form</h1>
-<form method="POST" action="/createpost">
-	
-	<label for="body">Body</label>
+<div id="newpost">
+ <h1 id="postform">New Post Form</h1>
+<form method="POST" action="/createpost">	
+	<label for="body">New Post</label>
   <textarea name="message_body" cols='100' rows="10" placeholder="Comment box"></textarea><br>
-	
-	<input type="submit">
+	<input type="submit">c
 </form>
-
+</div>
 
 
 <!--  this is the New Post form -->
-<h1>Your Posts</h1>
+
+<div id="p1">
+<h1 id="mypost">My Posts</h1>
 <ul class="userpostlist">
     <% @userposts.each do |post| %>
-    <li><strong>Body:</strong> <%= post.body %></li>
-      <li><strong>Username:</strong><%= post.user.username %></li>
+    <li><bold>Body:</bold> <%= post.body %></li>
+      <li><bold>Username:</bold><%= post.user.username %></li>
     <% end %>
 </ul>
+</div>
 
-<h1 id="">All Posts</h1>
+<!-- All Post from bloggers -->
+<div id="p2">
+<h1 id="allpost">All Posts</h1>
 <ul class="postlist">
-
   <% @posts.each do |post| %>
-    <li><strong>Body:</strong> <%= post.body %></li>
-    <li><strong>Username:</strong><%= post.user.username %></li>
+    <li><bold>Body:</bold> <%= post.body %></li>
+    <li><bold>Username:</bold><%= post.user.username %></li>
   <% end %>
 </ul>
+<div>
 
 
 
