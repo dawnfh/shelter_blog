@@ -61,12 +61,15 @@ post "/" do
 end
 
 get '/allposts' do
-	@posts=Post.where(user_id: session[:user_id])
+	@posts=Post.all
+	@userposts=Post.where(user_id: session[:user_id])
+
 	erb :posts
 end
 
 post '/createpost' do
 	@post=Post.create(body: params[:body])
+
   redirect "/allposts"
 end
 

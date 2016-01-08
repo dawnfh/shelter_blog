@@ -8,7 +8,7 @@ gem "rake"
 gem "sqlite3"
 gem "sinatra-flash"
 
-group :developmen do
+group :development do
 	gem "sqlite3"
 end
 
