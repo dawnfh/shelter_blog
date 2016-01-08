@@ -12,11 +12,30 @@ section 4: Logout-->
 <a href = "/">Logout</a>
 
 <div id="account">
+	<h2>Your Account</h2>
+	
+	 <!-- Show each account attribute: Username, Password, First, Last  -->
+
+
+
 <div class="edit">
-	<!-- embedded ruby for user's info -->
+	<!-- Show a form with each attribute field. If a field isn't updated, keep default value? We don't want blank fields -->
+	<h2>Edit your account below</h2>
+	<form method="POST" action="/profile">
+		<label for="name">Username</label>
+	  <input type="text" name="username"
+	  placeholder="New Username"><br>
+	  <label for="password">Password</label>
+	  <input type="password" name="password"
+	  placeholder="New Password"><br>
+	  <label for="email">Email</label>
+	  <input type="text" name="email"
+	  placeholder="Email"><br>
+	  <input type="submit" value="Update Account">
+	</form>
 </div>
 <div class="delete">
-	<!-- anchor tag to delete record? how does this remove the object from the table? -->
+	<!-- anchor tag to delete record. Alert user "Are you sure you want to delete your account?" -->
 </div>
 
 
