@@ -21,10 +21,23 @@
 
 
 <!--  this is the New Post form -->
+<h1>Your Posts</h1>
+<ul class="userpostlist">
+    <% @userposts.each do |post| %>
+    <li><strong>Body:</strong> <%= post.body %></li>
+      <li><strong>Username:</strong><%= post.user.username %></li>
+    <% end %>
+</ul>
+
 <h1 id="">All Posts</h1>
 <ul class="postlist">
+
   <% @posts.each do |post| %>
     <li><strong>Body:</strong> <%= post.body %></li>
     <li><strong>Username:</strong><%= post.user.username %></li>
   <% end %>
 </ul>
+
+
+
+

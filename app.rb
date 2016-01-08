@@ -41,11 +41,8 @@ get '/profile' do
 	erb :profile
 end
 
-# HTTP GET method and "/signup" action route
-# get "/signin" do
-   
-#   erb :index
-# end
+# post '/profile' do
+# @user= User.
 
 post "/" do
   #   in the signup form for the email and password input fields
@@ -62,12 +59,15 @@ post "/" do
 end
 
 get '/allposts' do
-	@posts=Post.where(user_id: session[:user_id])
+	@posts=Post.all
+	@userposts=Post.where(user_id: session[:user_id])
+
 	erb :posts
 end
 
 post '/createpost' do
 	@post=Post.create(body: params[:body])
+
   redirect "/allposts"
 end
 

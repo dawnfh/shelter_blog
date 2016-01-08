@@ -9,7 +9,7 @@ gem "rake"
 gem "sinatra-flash"
 gem "psych"
 
-group :developmen do
+group :development do
 	gem "sqlite3"
 end
 
