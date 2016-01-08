@@ -40,11 +40,8 @@ get '/profile' do
 	erb :profile
 end
 
-# HTTP GET method and "/signup" action route
-# get "/signin" do
-   
-#   erb :index
-# end
+# post '/profile' do
+# @user= User.
 
 post "/" do
   #   in the signup form for the email and password input fields
