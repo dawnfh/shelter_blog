@@ -1,6 +1,7 @@
 require "sinatra"
 require "sinatra/activerecord"
 require "sinatra/flash"
+require "psych"
 require "./models"
 
 
