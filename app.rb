@@ -41,8 +41,10 @@ get '/profile' do
 	erb :profile
 end
 
-# post '/profile' do
-# @user= User.
+post '/profile' do
+@user= current_user
+@user=User.create(username: params[:id])
+end
 
 post "/" do
   #   in the signup form for the email and password input fields
@@ -65,9 +67,10 @@ get '/allposts' do
 end
 
 post '/createpost' do
-	@post=Post.create(body: params[:body])
+	@posts=Post.create(body: params[:body], user_id: session[:user_id])
   redirect "/allposts"
 end
+
 
 get "/followees" do
   # here we are grabbing all the users that the logged in user is following

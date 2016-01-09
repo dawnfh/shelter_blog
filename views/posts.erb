@@ -21,25 +21,22 @@
 </div>
 
 
-<!--  this is the New Post form -->
-
 <div id="p1">
 <h1 id="mypost">My Posts</h1>
 <ul class="userpostlist">
     <% @userposts.each do |post| %>
     <li><bold>Body:</bold> <%= post.body %></li>
-      <li><bold>Username:</bold><%= post.user.username %></li>
+      <li><bold>Username:</bold> <%= post.user.username %></li>
     <% end %>
 </ul>
 </div>
 
-<!-- All Post from bloggers -->
 <div id="p2">
 <h1 id="allpost">All Posts</h1>
 <ul class="postlist">
   <% @posts.each do |post| %>
     <li><bold>Body:</bold> <%= post.body %></li>
-    <li><bold>Username:</bold><%= post.user.username %></li>
+    <li><bold>Username:</bold><% post.user.username%>
   <% end %>
 </ul>
 <div>
