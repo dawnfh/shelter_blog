@@ -99,8 +99,6 @@ get "/posts/followers" do
 end
 
 
-
-
 get "/followers" do
   # here we are grabbing all the users that are following the logged in user 
   @users = current_user.followers
