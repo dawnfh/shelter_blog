@@ -1,7 +1,7 @@
 
 
 <a href = "/">Logout</a>
-<a href ='/profiles'>My Account</a>
+<a href ='/profile'>My Account</a>
 
 
 <!--
@@ -12,34 +12,37 @@
  -->
 
 <div id="newpost">
- <h1 id="postform">New Post Form</h1>
-<form method="POST" action="/createpost">	
-	<label for="body">New Post</label>
-  <textarea name="message_body" cols='100' rows="10" placeholder="Comment box"></textarea><br>
-	<input type="submit">c
+  <%= current_user.username %>, please share your post.
+ 
+ <h3 id="postform">Post For Today</h3>
+
+<form action="/createpost" method="POST">	
+  <textarea for="body" name="body" cols='100' rows="5" placeholder="Comment box"></textarea><br>
+	<input type="submit">
 </form>
 </div>
 
 
-<div id="p1">
-<h1 id="mypost">My Posts</h1>
+<div id="mypost">
+<h3 id="mypost">My Posts</h3>
 <ul class="userpostlist">
     <% @userposts.each do |post| %>
-    <li><bold>Body:</bold> <%= post.body %></li>
+      <li><bold>Body:</bold> <%= post.body %></li>
       <li><bold>Username:</bold> <%= post.user.username %></li>
     <% end %>
 </ul>
 </div>
 
-<div id="p2">
-<h1 id="allpost">All Posts</h1>
+<div id="posts">
+<h3 id="allpost">All Posts</h3>
 <ul class="postlist">
   <% @posts.each do |post| %>
     <li><bold>Body:</bold> <%= post.body %></li>
-    <li><bold>Username:</bold><% post.user.username%>
+    <li><bold>Username:</bold><% post.user.username %><li>
   <% end %>
 </ul>
 <div>
+
 
 
 
