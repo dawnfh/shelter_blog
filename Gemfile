@@ -9,6 +9,10 @@ gem "rake"
 gem "sinatra-flash"
 gem "psych"
 
+gem "rerun"
+
+gem "paperclip", "~> 4.2"
+
 group :development do
 	gem "sqlite3"
 end

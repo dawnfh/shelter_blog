@@ -14,8 +14,16 @@ enable :sessions
 # check if user is logged in with a session
 def current_user
 	if session[:user_id]
-		@current_user = User.find(session[:user_id])
+	@current_user = User.find(session[:user_id])
 	end
+end
+
+def destroy
+  @user = User.find(params[:id])
+  if@user.destroy
+  else
+  redirect_to '/'
+  end
 end
 
 #will output display of what is on the index.erb templpate
@@ -42,11 +50,11 @@ get '/profile' do
 end
 
 post '/profile' do
-@user= current_user
-@user=User.create(username: params[:id])
+  @user= current_user
+  @user=User.create(username: params[:id])
 end
 
-post "/" do
+post '/' do
   #   in the signup form for the email and password input fields
   @user = User.create(username: params[:username], email: params[:email], password: params[:password])
   
@@ -69,9 +77,8 @@ end
 
 post '/createpost' do
 	@posts=Post.create(body: params[:body], user_id: session[:user_id])
-  redirect "/allposts"
+  redirect '/allposts'
 end
-
 
 get "/followees" do
   # here we are grabbing all the users that the logged in user is following
@@ -127,7 +134,6 @@ end
 get "/users/:followee_id/unfollow" do
   @follow = Follow.where(follower_id: session[:user_id], followee_id: params[:followee_id]).first
   @follow.destroy
-
   redirect "/allposts"
 end
 
@@ -136,6 +142,8 @@ get '/logout' do
 	flash[:info] = "You are now logged out."
 	redirect '/sign-in'
 end
+
+
 
 
 
