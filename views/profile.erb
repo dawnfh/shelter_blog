@@ -9,25 +9,37 @@ section 4: Logout-->
 
 <h2>Welcome, <%= @user.username %><h2>
 
-<a href ='/allposts'>View Posts</a>
-<a herf ='/followees'>View Followees</a>
 
 
-<a href = '/'>Logout</a>
-<a href ='/profile'>My Account</a>
-<a href ='/posts/followers'>View Followers</a>
+<a href="/allposts" style="text-decoration:none">
+   <input class="button" type="button" value="View Posts"/>
+</a>
+<a href="/profile" style="text-decoration:none">
+   <input class="button" type="button" value="My Account"/>
+</a>
+<a href="/follows" style="text-decoration:none">
+   <input class="button" type="button" value="Followees"/>
+</a>
+<a href="/follows" style="text-decoration:none">
+   <input class="button" type="button" value="Followers"/>
+</a>
+<a href="/" style="text-decoration:none">
+   <input class="button" type="button" value="Logout"/>
+</a>
 
 
 <div id="account">
-	<h2>My Account</h2>
 	
 	<li><strong>Username:</strong><%=@user.username%></li>
 	<li>Member since:</li>
 
 
 
-<div class="edit">
+<div id="edit">
 	<!-- Show a form with each attribute field. If a field isn't updated, keep default value? We don't want blank fields -->
+
+
+	
 	<h2>Edit your account below</h2>
 	<form method="POST" action="/profile">
 		<label for="name">Username</label>
@@ -42,6 +54,7 @@ section 4: Logout-->
 	  <input type="submit" value="Update Account">
 	</form>
 </div>
+
 <div class="delete">
 	<!-- anchor tag to delete record. Alert user "Are you sure you want to delete your account?" -->
 </div>

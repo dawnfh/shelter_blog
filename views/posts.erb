@@ -1,7 +1,16 @@
 
 
-<a href = "/">Logout</a>
-<a href ='/profile'>My Account</a>
+
+<a href="/profile" style="text-decoration:none">
+   <input class="button" type="button" value="My Accountt"/>
+</a>
+<a href="/posts" style="text-decoration:none">
+   <input class="button" type="button" value="Posts"/>
+</a>
+<a href="/" style="text-decoration:none">
+   <input class="button" type="button" value="Logout"/>
+</a>
+
 
 
 <!--
@@ -11,15 +20,15 @@
   post "/posts" route defined in the app.rb file
  -->
 
-<div id="newpost">
   <%= current_user.username %>, please share your post.
  
  <h3 id="postform">Post For Today</h3>
-
-<form action="/createpost" method="POST">	
-  <textarea for="body" name="body" cols='100' rows="5" placeholder="Comment box"></textarea><br>
-	<input type="submit">
-</form>
+<div id="newpost">
+  <form method="POST" action="/createpost"> 
+    <textarea name="message_body" cols='100' rows="10" placeholder="Comment box"></textarea><br>
+    <input type="submit" value="Add Post">
+  </form>
+  </div>
 </div>
 
 
@@ -38,10 +47,12 @@
 <ul class="postlist">
   <% @posts.each do |post| %>
     <li><bold>Body:</bold> <%= post.body %></li>
-    <li><bold>Username:</bold><% post.user.username %><li>
+    <li><bold>Username:</bold><% user.username %><li>
   <% end %>
 </ul>
 <div>
+
+
 
 
 

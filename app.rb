@@ -30,8 +30,8 @@ end
 get '/' do
 	erb :index	
 end
- #will output display from index which is home & login access.
 
+ #will output display from index which is home & login access.
 post '/' do
 	@user = User.where(username: params[:username]).first
 	if @user && @user.password == params[:password]
@@ -75,12 +75,26 @@ get '/allposts' do
 	erb :posts
 end
 
+# create post
 post '/createpost' do
-	@posts=Post.create(body: params[:body], user_id: session[:user_id])
-  redirect '/allposts'
+	@posts=Post.create(body: params[:body])
+  # redirect '/allposts'
+  erb :posts
 end
 
-get "/followees" do
+# to show post
+get '/post/:id' do
+  @post = Post.find(params[:id])
+  erb :posts
+
+# #update post
+# put '/post/:id' do
+#   @post =Post.find(params[:id])
+#   @post.update(body: params[:body])
+#   @post.save
+#   redirect '/allposts/'+params[:id]
+
+get '/followees' do
   # here we are grabbing all the users that the logged in user is following
   @users = current_user.followees
 
@@ -100,11 +114,6 @@ get "/posts/followers" do
     posts << follower.posts
   end
 
-  #   http://ruby-doc.org/core-2.2.3/Array.html#method-i-flatten
-  @posts.flatten!
-  erb :posts
-end
-
 
 get "/followers" do
   # here we are grabbing all the users that are following the logged in user 
@@ -114,7 +123,7 @@ get "/followers" do
   # notice how this also goes to the posts.erb template
   #   think DRY (Don't Repeat Yourself)
   erb :follows
-end
+  end
 
 # HTTP GET method and "/users/:user_id/follow" action route
 get "/users/:followee_id/follow" do
@@ -128,22 +137,21 @@ get "/users/:followee_id/follow" do
   #   for our purposes now it will do but there is a more useful
   #   way to do this
   redirect "/followss"
-end
+  end
 
 # HTTP GET method and "/users/:user_id/unfollow" action route
 get "/users/:followee_id/unfollow" do
   @follow = Follow.where(follower_id: session[:user_id], followee_id: params[:followee_id]).first
   @follow.destroy
   redirect "/allposts"
-end
+  end
 
 get '/logout' do
 	session.clear
 	flash[:info] = "You are now logged out."
 	redirect '/sign-in'
+  end
+
 end
 
-
-
-
-
+end
