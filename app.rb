@@ -45,7 +45,7 @@ post '/' do
 end
 
 get '/profile' do
-	@user=current_user
+	@user=current_user.id
 	erb :profile
 end
 
@@ -78,7 +78,7 @@ end
 # create post
 post '/createpost' do
 	@posts=Post.create(body: params[:body])
-  # redirect '/allposts'
+  redirect '/allposts'
   erb :posts
 end
 
