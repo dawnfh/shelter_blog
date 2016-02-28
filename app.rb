@@ -1,8 +1,9 @@
 require "sinatra"
 require "sinatra/activerecord"
 require "sinatra/flash"
-require "psych"
 require "./models"
+
+
 
 
 
@@ -16,6 +17,11 @@ def current_user
 	if session[:user_id]
 	@current_user = User.find(session[:user_id])
 	end
+end
+
+def edit
+    @user = User.find(params[:id])
+    erb :profile
 end
 
 def destroy
@@ -35,7 +41,7 @@ end
 post '/' do
 	@user = User.where(username: params[:username]).first
 	if @user && @user.password == params[:password]
-		session[:user_id] = @user.id
+		session[:user_id] = user.id
 		flash[:notice] = "You are logged in."
 		redirect '/profile'
 	else
@@ -44,17 +50,14 @@ post '/' do
 	end
 end
 
+
 get '/profile' do
-	@user=current_user.id
+	@user = User.find(params[:id])
 	erb :profile
 end
 
+# create profile
 post '/profile' do
-  @user= current_user
-  @user=User.create(username: params[:id])
-end
-
-post '/' do
   #   in the signup form for the email and password input fields
   @user = User.create(username: params[:username], email: params[:email], password: params[:password])
   
@@ -68,24 +71,25 @@ post '/' do
   redirect '/profile'
 end
 
-get '/allposts' do
-	@posts=Post.all
-	@userposts=Post.where(user_id: session[:user_id])
 
-	erb :posts
+get '/allposts' do
+	@posts = Post.all
+	@userposts = Post.where(user_id: session[:user_id])
+  erb :posts
 end
 
 # create post
 post '/createpost' do
-	@posts=Post.create(body: params[:body])
-  redirect '/allposts'
+	@posts = Post.create(body: params[:body]) 
   erb :posts
+
 end
 
 # to show post
 get '/post/:id' do
   @post = Post.find(params[:id])
   erb :posts
+end
 
 # #update post
 # put '/post/:id' do
@@ -154,4 +158,4 @@ get '/logout' do
 
 end
 
-end
+

@@ -4,10 +4,10 @@
 <a href="/profile" style="text-decoration:none">
    <input class="button" type="button" value="My Accountt"/>
 </a>
-<a href="/posts" style="text-decoration:none">
+<a href="/allposts" style="text-decoration:none">
    <input class="button" type="button" value="Posts"/>
 </a>
-<a href="/" style="text-decoration:none">
+<a href="/logout" style="text-decoration:none">
    <input class="button" type="button" value="Logout"/>
 </a>
 
@@ -35,7 +35,7 @@
 <div id="mypost">
 <h3 id="mypost">My Posts</h3>
 <ul class="userpostlist">
-    <% @posts.each do |post| %>
+    <% @userposts.each do |post| %>
       <li><bold>Body:</bold> <%= post.body %></li>
       <li><bold>Username:</bold> <%= post.user_id %></li>
     <% end %>
@@ -45,9 +45,8 @@
 <div id="posts">
 <h3 id="allpost">All Posts</h3>
 <ul class="postlist">
-  <% @posts.each do |post| %>
-    <li><bold>Body:</bold> <%= post.body %></li>
-    <li><bold>Username:</bold><% post.user_id %><li>
+  <%= @posts.each do |post| %>
+    <li><bold>Body:</bold> <%= post.body %></li
   <% end %>
 </ul>
 <div>
